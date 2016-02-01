@@ -1,0 +1,19 @@
+body {
+	background-color: #EEF;
+}
+
+.container {
+	background-color: #FFF;
+}
+
+.editlink {
+	cursor: pointer;
+}
+
+.editlink .glyphicon {
+	display: none;
+}
+
+.value:hover > .editlink {
+	display: inline;
+}
