@@ -105,8 +105,10 @@ public class LoginBean {
         if(login.equalsIgnoreCase(dbuserName))
         {
             
-            if(password.equals(dbpassword))
+            if(password.equals(dbpassword)){
+                connected = true;
                 return "success";
+            }
             else
             {
                 return "failure";
@@ -119,10 +121,10 @@ public class LoginBean {
         }
     }
     
-    public void testUserConnected() throws IOException{
+    public String testUserConnected() throws IOException{
         if(!connected){
-            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-            context.redirect(context.getRequestContextPath() + "login.xhtml");
+            return "failure";
         }
+        return "success";
     }
 }
