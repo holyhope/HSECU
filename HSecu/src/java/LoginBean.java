@@ -3,6 +3,7 @@ import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 /*
@@ -13,11 +14,12 @@ import javax.faces.bean.ManagedBean;
 
 /**
  *
- * @author Moussa
+ * @author Peroumalle
  */
-@ManagedBean
+@ManagedBean(name = "loginBean")
+@ApplicationScoped
 public class LoginBean {
-    private String userName;
+    private String login;
     private String password;
     private String dbuserName;
   
@@ -28,12 +30,12 @@ public class LoginBean {
     String SQL;
      
   
-    public String getUserName() {
-        return userName;
+    public String getLogin() {
+        return login;
     }
  
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setLogin(String login) {
+        this.login = login;
     }
  
     public String getPassword() {
@@ -65,7 +67,7 @@ public class LoginBean {
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hsecu","root","");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hsecu","root","root");
             statement = connection.createStatement();
             SQL = "Select * from utilisateur";
             resultSet = statement.executeQuery(SQL);
@@ -82,9 +84,9 @@ public class LoginBean {
      
     public String checkValidUser()
     {
-        dbData(userName);
+        dbData(login);
   
-        if(userName.equalsIgnoreCase(dbuserName))
+        if(login.equalsIgnoreCase(dbuserName))
         {
   
             if(password.equals(dbpassword))

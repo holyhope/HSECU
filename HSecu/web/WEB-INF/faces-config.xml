@@ -6,29 +6,6 @@
 
     <navigation-rule>
         <description>Loging Page</description>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-action>#{loginBean.checkValidUser}</from-action>
-            <from-outcome>success</from-outcome>
-            <to-view-id>/inscriptionOK.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-action>#{userBean.checkValidUser}</from-action>
-            <from-outcome>failure</from-outcome>
-            <to-view-id>/failure.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-action>#{inscriptionBean.validerInscription}</from-action>
-            <from-outcome>connetionOk</from-outcome>
-            <to-view-id>/connetionOk.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-action>#{inscriptionBean.validerInscription}</from-action>
-            <from-outcome>inscriptionOK</from-outcome>
-            <to-view-id>/connetionKO.xhtml</to-view-id>
-        </navigation-case>
-        
- 
- 
+        <from-view-id>/login.xhtml</from-view-id>
     </navigation-rule>
 </faces-config>
