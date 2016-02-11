@@ -7,5 +7,16 @@
     <navigation-rule>
         <description>Loging Page</description>
         <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{loginBean.checkValidUser}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/findDM.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{loginBean.checkValidUser}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 </faces-config>

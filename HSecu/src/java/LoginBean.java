@@ -20,9 +20,18 @@ import javax.faces.bean.ManagedBean;
 @ApplicationScoped
 public class LoginBean {
     private String login;
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
     private String password;
     private String dbuserName;
-  
+    private String error;
+    
     private String dbpassword;
     Connection connection;
     Statement statement;
@@ -67,16 +76,18 @@ public class LoginBean {
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hsecu","root","root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/HSecu","root","root");
             statement = connection.createStatement();
-            SQL = "Select * from utilisateur";
+            SQL = "SELECT `login`,`motdepasse` from utilisateur";
             resultSet = statement.executeQuery(SQL);
             resultSet.next();
-            dbuserName = resultSet.getString(1).toString();
-            dbpassword = resultSet.getString(2).toString();
+            dbuserName = resultSet.getString(1);
+            dbpassword = resultSet.getString(2);
+            System.out.println("------------"+dbuserName);
         }
         catch(Exception ex)
         {
+            error ="Identifiant ou mot de passe éronné";
             ex.printStackTrace();
             System.out.println("Exception Occured in the process :" + ex);
         }
@@ -88,7 +99,7 @@ public class LoginBean {
   
         if(login.equalsIgnoreCase(dbuserName))
         {
-  
+            
             if(password.equals(dbpassword))
                 return "success";
             else
@@ -98,6 +109,7 @@ public class LoginBean {
         }
         else
         {
+            
             return "failure";
         }
     }
