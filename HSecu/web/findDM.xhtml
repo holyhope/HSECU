@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>HSECU - Consultation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="styles/template.css" />
+        <link rel="stylesheet" href="styles/bootstrap.min.css" />
+        <script src="scripts/jquery-2.1.4.min.js"></script>
+        <script>
+			<!--
+				jQuery(document).ready(function($) {
+					var $form = $('#search-form');
+					var $search = $form.find('#search').on('keyup',function() {
+						var value = $(this).val().toLowerCase().trim();
+						$('#list .dm').show().filter(function(index, elem) {
+							return $(elem).data('name').indexOf(value) == -1;
+						}).hide();
+					});
+					$form.find('#clear').on('click', function() {
+						$search.val('').trigger('keyup');
+					});
+					$form.removeClass('hidden');
+				});
+			-->
+		</script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1>Consulter un dossier médical</h1>
+            </div>
+            <div class="form-group hidden" id="search-form">
+                <label class="control-label sr-only" for="search">Search</label>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                    <input type="text" class="form-control" id="search" placeholder="Rechercher..." />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="clear" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                    </span>
+                </div>
+            </div>
+            <div class="list-group" id="list">
+                <a class="list-group-item dm" href="consult.html?id=123123123" data-name="camille nouchka">Camille Nouchka</a>
+                <a class="list-group-item dm" href="consult.html?id=123132948" data-name="robert nouchka">Robert Nouchka</a>
+                <a class="list-group-item dm" href="consult.html?id=123123485" data-name="élise dupuy">Élise Dupuy</a>
+                <a class="list-group-item dm" href="consult.html?id=325235235" data-name="claude dupuy">Claude Dupuy</a>
+                <a class="list-group-item dm" href="consult.html?id=359685432" data-name="camille dupuy">Camille Dupuy</a>
+            </div>
+        </div>
+    </body>
+</html>

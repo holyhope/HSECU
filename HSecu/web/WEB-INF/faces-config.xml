@@ -6,7 +6,7 @@
 
     <navigation-rule>
         <description>Loging Page</description>
-        <from-view-id>/index.xhtml</from-view-id>
+        <from-view-id>/findDM.xhtml</from-view-id>
         <navigation-case>
             <from-action>#{loginBean.checkValidUser}</from-action>
             <from-outcome>success</from-outcome>
