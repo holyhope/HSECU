@@ -1,10 +1,13 @@
 
+import java.io.IOException;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,6 +25,7 @@ public class LoginBean {
     private String login;
     private String password;
     private String dbuserName;
+    private Boolean connected = false;
   
     private String dbpassword;
     Connection connection;
@@ -67,7 +71,7 @@ public class LoginBean {
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hsecu","root","root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/HSecu","root","root");
             statement = connection.createStatement();
             SQL = "Select * from utilisateur";
             resultSet = statement.executeQuery(SQL);
@@ -99,6 +103,13 @@ public class LoginBean {
         else
         {
             return "failure";
+        }
+    }
+    
+    public void testUserConnected() throws IOException{
+        if(!connected){
+            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+            context.redirect(context.getRequestContextPath() + "login.xhtml");
         }
     }
 }

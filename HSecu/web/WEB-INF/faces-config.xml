@@ -8,4 +8,24 @@
         <description>Loging Page</description>
         <from-view-id>/login.xhtml</from-view-id>
     </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/findDM.xhtml</from-view-id>
+        <navigation-case>
+            <to-view-id>/consult.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <managed-bean>
+        <managed-bean-name>loginBean</managed-bean-name>
+        <managed-bean-class>LoginBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>findDMBean</managed-bean-name>
+        <managed-bean-class>findDMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
 </faces-config>
