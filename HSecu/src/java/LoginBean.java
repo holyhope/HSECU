@@ -1,10 +1,13 @@
 
+import java.io.IOException;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -30,6 +33,8 @@ public class LoginBean {
     }
     private String password;
     private String dbuserName;
+    private Boolean connected = false;
+  
     private String error;
     
     private String dbpassword;
@@ -111,6 +116,13 @@ public class LoginBean {
         {
             
             return "failure";
+        }
+    }
+    
+    public void testUserConnected() throws IOException{
+        if(!connected){
+            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+            context.redirect(context.getRequestContextPath() + "login.xhtml");
         }
     }
 }
