@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <script src="scripts/jquery-2.1.4.min.js"></script>
+
+        <link rel="stylesheet" href="styles/bootstrap.min.css" />
+	<script src="scripts/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="styles/template.css" />
+
+	<title>HSECU - Consultation</title>
+		
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />	
+        <script>
+			<!--
+				jQuery(document).ready(function($) {
+					$('.editlink').on('click', function() {
+						var $value = $(this).parent();
+						var $hiddenValue = $value.siblings('.hidden-value');
+						if ($hiddenValue.length > 0) {
+							$hiddenValue.removeClass('hidden').find('.input').focus();
+							$value.addClass('hidden');
+						}
+					});
+					$('.hidden-value').each(function(index, elem) {
+						var $input = $(elem).find('.input').prop('disabled', false);
+						var $value = $(elem).siblings('.value');
+						var $state = $(elem).find('.state');
+						var timeout;
+						var retryTimeOut;
+						var confirmed = false;
+						var jqxhr = false;
+						var $save = $(elem).find('.save');
+						var $cancelChanges = $(elem).find('.cancel-changes');
+						var $cancelSync = $(elem).find('.cancel-sync');
+						var getSavedValue = function() {
+							console.log($value.find('.content-value'));
+							return $value.find('.content-value').text();
+						};
+						var saveValue = function () {
+							var value = $input.val();
+							var previous = getSavedValue();
+							if( value == previous) {
+								$(elem).addClass('hidden');
+								$value.removeClass('hidden');
+							} else {
+								if (confirmed || confirm('Voulez-vous enregistrer les modifications ?')) {
+									$input.prop('disabled', true);
+									confirmed = true;
+									$cancelSync.removeClass('hidden');
+									$cancelChanges.addClass('hidden');
+									clearTimeout(timeout);
+									$state.removeClass('hidden');
+									$save.addClass('hidden');
+									jqxhr = $.post({
+										url: "save.html",
+										data: {
+											id : "@id",
+											field : $(elem).data('field'),
+											value : value,
+											previous : previous
+										},
+										success: function( data ) {
+											confirmed = false;
+											$input.addClass('hidden');
+											$input.prop('disabled', false);
+											$save.removeClass('hidden');
+											$cancelChanges.removeClass('hidden');
+											$cancelSync.addClass('hidden');
+											$value.removeClass('hidden').text(data.value);
+											$state.removeClass('glyphicon-transfer').addClass('glyphicon-saved');
+										},
+										dataType: 'json'
+									}).fail(function() {
+										$state.removeClass('glyphicon-transfer').addClass('glyphicon-flash');
+										retryTimeOut = setTimeout(saveValue, 1000);
+									}).always(function() {
+										timeout = setTimeout(function() { $state.addClass('hidden'); }, 2000);
+									});
+								}
+							}
+						};
+						$input.on('blur', function() {
+							if( $input.val() == getSavedValue()) {
+								$(elem).addClass('hidden');
+								$value.removeClass('hidden');
+							}
+						});
+						$save.on('click', saveValue);
+						$cancelChanges.on('click', function() {
+							if (confirm('Êtes vous sûr de vouloir abandonner les modifications ?')) {
+								$(elem).addClass('hidden');
+								$value.removeClass('hidden');
+								$input.val(getSavedValue());
+							}
+						});
+						$cancelSync.on('click', function() {
+							clearTimeout(retryTimeOut);
+							if( jqxhr ) {
+								jqxhr.abort();
+							}
+							confirmed = false;
+							$save.removeClass('hidden');
+							$cancelChanges.removeClass('hidden');
+							$cancelSync.addClass('hidden');
+							$input.prop('disabled', false);
+						});
+					});
+				});
+			-->
+		</script>
+    </h:head>
+    <h:body>
+        <div class="container">
+			<div class="page-header">
+				<h1>Dossier médical <small>@id</small></h1>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" aria-expanded="true" aria-controls="general-content" data-target="#general-content">
+					<h2 class="panel-title">Général</h2>
+				</div>
+				<div class="container-fluid">
+					<dl class="dl-horizontal collapse in" id="general-content">
+						<dt class="label-cell">Nom</dt>
+						<dd class="value-cell">
+							<div class="container-fluid">
+								<div class="value">
+									<span class="content-value">@nom</span>
+									<a href="#edit-name" class="editlink glyphicon glyphicon-pencil"></a>
+								</div>
+								<div class="hidden-value hidden" data-field="name">
+									<div class="form-group has-feedback">
+										<div class="input-group">
+											<span class="input-group-btn">
+												<button class="btn btn-default cancel-sync glyphicon glyphicon-remove hidden" type="button"></button>
+											</span>
+											<input class="input form-control" type="text" id="firstname" value="@nom" />
+											<span class="glyphicon glyphicon-transfer form-control-feedback hidden state" aria-hidden="true"></span>
+											<span class="input-group-btn">
+												<button class="btn cancel-changes glyphicon glyphicon-remove" type="button"></button>
+												<button class="btn btn-default save glyphicon glyphicon-save" type="button"></button>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</dd>
+						<dt class="label-cell">Prénom</dt>
+						<dd class="value-cell">
+							<div class="container-fluid">
+								<div class="value">
+									<span class="content-value">@prénom</span>
+									<a href="#edit-firstname" class="editlink glyphicon glyphicon-pencil"></a>
+								</div>
+								<div class="hidden-value hidden" data-field="firstname">
+									<div class="form-group has-feedback">
+										<div class="input-group">
+											<span class="input-group-btn">
+												<button class="btn btn-default cancel-sync glyphicon glyphicon-remove hidden" type="button"></button>
+											</span>
+											<input class="input form-control" type="text" id="firstname" value="@prenom" />
+											<span class="glyphicon glyphicon-transfer form-control-feedback hidden state" aria-hidden="true"></span>
+											<span class="input-group-btn">
+												<button class="btn cancel-changes glyphicon glyphicon-remove" type="button"></button>
+												<button class="btn btn-default save glyphicon glyphicon-save" type="button"></button>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+    </h:body>
+</html>
+

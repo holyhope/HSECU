@@ -27,8 +27,12 @@
             <from-outcome>inscriptionOK</from-outcome>
             <to-view-id>/connetionKO.xhtml</to-view-id>
         </navigation-case>
-        
- 
- 
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/findDM.xhtml</from-view-id>
+        <navigation-case>
+            <to-view-id>/consult.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 </faces-config>
