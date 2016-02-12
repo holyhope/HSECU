@@ -29,129 +29,60 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@update</span>
-									<a href="#edit-update" class="editlink glyphicon glyphicon-pencil"></a>
+									<span class="content-value">@last update</span>
+									
 								</div>
-								<div class="hidden-value hidden" data-field="update">
-									<div class="form-group has-feedback">
-										<div class="input-group">
-											<span class="input-group-btn">
-												<button class="btn btn-default cancel-sync glyphicon glyphicon-remove hidden" type="button"></button>
-											</span>
-											<input class="input form-control" type="text" id="firstname" value="@update" />
-											<span class="glyphicon glyphicon-transfer form-control-feedback hidden state" aria-hidden="true"></span>
-											<span class="input-group-btn">
-												<button class="btn cancel-changes glyphicon glyphicon-remove" type="button"></button>
-												<button class="btn btn-default save glyphicon glyphicon-save" type="button"></button>
-											</span>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</dd>
 						<dt class="label-cell">Last read</dt>
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@read</span>
-									<a href="#edit-read" class="editlink glyphicon glyphicon-pencil"></a>
+									<span class="content-value">@last read</span>
+									
 								</div>
-								<div class="hidden-value hidden" data-field="read">
-									<div class="form-group has-feedback">
-										<div class="input-group">
-											<span class="input-group-btn">
-												<button class="btn btn-default cancel-sync glyphicon glyphicon-remove hidden" type="button"></button>
-											</span>
-											<input class="input form-control" type="text" id="firstname" value="@read" />
-											<span class="glyphicon glyphicon-transfer form-control-feedback hidden state" aria-hidden="true"></span>
-											<span class="input-group-btn">
-												<button class="btn cancel-changes glyphicon glyphicon-remove" type="button"></button>
-												<button class="btn btn-default save glyphicon glyphicon-save" type="button"></button>
-											</span>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</dd>
 					</dl>
 				</div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading" data-toggle="collapse" aria-expanded="true" aria-controls="general-content" data-target="#general-content">
+				<div class="panel-heading" data-toggle="collapse" aria-expanded="true" aria-controls="patient-content" data-target="#patient-content">
 					<h2 class="panel-title">Patient</h2>
 				</div>
 				<div class="container-fluid">
-					<dl class="dl-horizontal collapse in" id="general-content">
+					<dl class="dl-horizontal collapse in" id="patient-content">
 						<dt class="label-cell">Nom</dt>
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
 									<span class="content-value">@nom</span>
-									<a href="#edit-namepatient" class="editlink glyphicon glyphicon-pencil"></a>
+									
 								</div>
-								<div class="hidden-value hidden" data-field="namepatient">
-									<div class="form-group has-feedback">
-										<div class="input-group">
-											<span class="input-group-btn">
-												<button class="btn btn-default cancel-sync glyphicon glyphicon-remove hidden" type="button"></button>
-											</span>
-											<input class="input form-control" type="text" id="firstname" value="@nom" />
-											<span class="glyphicon glyphicon-transfer form-control-feedback hidden state" aria-hidden="true"></span>
-											<span class="input-group-btn">
-												<button class="btn cancel-changes glyphicon glyphicon-remove" type="button"></button>
-												<button class="btn btn-default save glyphicon glyphicon-save" type="button"></button>
-											</span>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</dd>
-						<dt class="label-cell">Prénom</dt>
+                                                <dt class="label-cell">Prénom</dt>
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@prénom</span>
-									<a href="#edit-firstnamepatient" class="editlink glyphicon glyphicon-pencil"></a>
+									<span class="content-value">@prenom</span>
+									
 								</div>
-								<div class="hidden-value hidden" data-field="firstnamepatient">
-									<div class="form-group has-feedback">
-										<div class="input-group">
-											<span class="input-group-btn">
-												<button class="btn btn-default cancel-sync glyphicon glyphicon-remove hidden" type="button"></button>
-											</span>
-											<input class="input form-control" type="text" id="firstname" value="@prénom" />
-											<span class="glyphicon glyphicon-transfer form-control-feedback hidden state" aria-hidden="true"></span>
-											<span class="input-group-btn">
-												<button class="btn cancel-changes glyphicon glyphicon-remove" type="button"></button>
-												<button class="btn btn-default save glyphicon glyphicon-save" type="button"></button>
-											</span>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</dd>
-                                                <dt class="label-cell">Sexe</dt>
+						
+                                                <dt class="label-cell">Service</dt>
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@sexe</span>
-									<a href="#edit-sexepatient" class="editlink glyphicon glyphicon-pencil"></a>
+									<span class="content-value">@service</span>
+									
 								</div>
-								<div class="hidden-value hidden" data-field="sexepatient">
-									<div class="form-group has-feedback">
-										<div class="input-group">
-											<span class="input-group-btn">
-												<button class="btn btn-default cancel-sync glyphicon glyphicon-remove hidden" type="button"></button>
-											</span>
-											<input class="input form-control" type="text" id="firstname" value="@sexe" />
-											<span class="glyphicon glyphicon-transfer form-control-feedback hidden state" aria-hidden="true"></span>
-											<span class="input-group-btn">
-												<button class="btn cancel-changes glyphicon glyphicon-remove" type="button"></button>
-												<button class="btn btn-default save glyphicon glyphicon-save" type="button"></button>
-											</span>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</dd>
                                                 <dt class="label-cell">Adresse</dt>
@@ -159,23 +90,9 @@
 							<div class="container-fluid">
 								<div class="value">
 									<span class="content-value">@adresse</span>
-									<a href="#edit-adressepatient" class="editlink glyphicon glyphicon-pencil"></a>
+									
 								</div>
-								<div class="hidden-value hidden" data-field="adressepatient">
-									<div class="form-group has-feedback">
-										<div class="input-group">
-											<span class="input-group-btn">
-												<button class="btn btn-default cancel-sync glyphicon glyphicon-remove hidden" type="button"></button>
-											</span>
-											<input class="input form-control" type="text" id="firstname" value="@adresse" />
-											<span class="glyphicon glyphicon-transfer form-control-feedback hidden state" aria-hidden="true"></span>
-											<span class="input-group-btn">
-												<button class="btn cancel-changes glyphicon glyphicon-remove" type="button"></button>
-												<button class="btn btn-default save glyphicon glyphicon-save" type="button"></button>
-											</span>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</dd>
                                                 <dt class="label-cell">Téléphone</dt>
@@ -183,23 +100,8 @@
 							<div class="container-fluid">
 								<div class="value">
 									<span class="content-value">@téléphone</span>
-									<a href="#edit-phonepatient" class="editlink glyphicon glyphicon-pencil"></a>
 								</div>
-								<div class="hidden-value hidden" data-field="phonepatient">
-									<div class="form-group has-feedback">
-										<div class="input-group">
-											<span class="input-group-btn">
-												<button class="btn btn-default cancel-sync glyphicon glyphicon-remove hidden" type="button"></button>
-											</span>
-											<input class="input form-control" type="text" id="firstname" value="@téléphone" />
-											<span class="glyphicon glyphicon-transfer form-control-feedback hidden state" aria-hidden="true"></span>
-											<span class="input-group-btn">
-												<button class="btn cancel-changes glyphicon glyphicon-remove" type="button"></button>
-												<button class="btn btn-default save glyphicon glyphicon-save" type="button"></button>
-											</span>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</dd>
                                                 <dt class="label-cell">Date de naissance</dt>
@@ -207,56 +109,38 @@
 							<div class="container-fluid">
 								<div class="value">
 									<span class="content-value">@date de naissance</span>
-									<a href="#edit-birthdaypatient" class="editlink glyphicon glyphicon-pencil"></a>
+									
 								</div>
-								<div class="hidden-value hidden" data-field="birthdaypatient">
-									<div class="form-group has-feedback">
-										<div class="input-group">
-											<span class="input-group-btn">
-												<button class="btn btn-default cancel-sync glyphicon glyphicon-remove hidden" type="button"></button>
-											</span>
-											<input class="input form-control" type="text" id="firstname" value="@date de naissance" />
-											<span class="glyphicon glyphicon-transfer form-control-feedback hidden state" aria-hidden="true"></span>
-											<span class="input-group-btn">
-												<button class="btn cancel-changes glyphicon glyphicon-remove" type="button"></button>
-												<button class="btn btn-default save glyphicon glyphicon-save" type="button"></button>
-											</span>
-										</div>
-									</div>
+								
+							</div>
+						</dd>
+                                                <dt class="label-cell">Email</dt>
+						<dd class="value-cell">
+							<div class="container-fluid">
+								<div class="value">
+									<span class="content-value">@email</span>
+									
 								</div>
+								
 							</div>
 						</dd>
 					</dl>
 				</div>
 			</div>
                         <div class="panel panel-default">
-				<div class="panel-heading" data-toggle="collapse" aria-expanded="true" aria-controls="general-content" data-target="#general-content">
+				<div class="panel-heading" data-toggle="collapse" aria-expanded="true" aria-controls="doctor-content" data-target="#doctor-content">
 					<h2 class="panel-title">Médecin Traitant</h2>
 				</div>
 				<div class="container-fluid">
-					<dl class="dl-horizontal collapse in" id="general-content">
+					<dl class="dl-horizontal collapse in" id="doctor-content">
 						<dt class="label-cell">Nom</dt>
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@nom</span>
-									<a href="#edit-namemedecin" class="editlink glyphicon glyphicon-pencil"></a>
+									<span class="content-value">@adresse</span>
+									
 								</div>
-								<div class="hidden-value hidden" data-field="namemedecin">
-									<div class="form-group has-feedback">
-										<div class="input-group">
-											<span class="input-group-btn">
-												<button class="btn btn-default cancel-sync glyphicon glyphicon-remove hidden" type="button"></button>
-											</span>
-											<input class="input form-control" type="text" id="firstname" value="@nom" />
-											<span class="glyphicon glyphicon-transfer form-control-feedback hidden state" aria-hidden="true"></span>
-											<span class="input-group-btn">
-												<button class="btn cancel-changes glyphicon glyphicon-remove" type="button"></button>
-												<button class="btn btn-default save glyphicon glyphicon-save" type="button"></button>
-											</span>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</dd>
 						<dt class="label-cell">Prénom</dt>
@@ -264,82 +148,50 @@
 							<div class="container-fluid">
 								<div class="value">
 									<span class="content-value">@prénom</span>
-									<a href="#edit-firstnamemedecin" class="editlink glyphicon glyphicon-pencil"></a>
+									
 								</div>
-								<div class="hidden-value hidden" data-field="firstnamemedecin">
-									<div class="form-group has-feedback">
-										<div class="input-group">
-											<span class="input-group-btn">
-												<button class="btn btn-default cancel-sync glyphicon glyphicon-remove hidden" type="button"></button>
-											</span>
-											<input class="input form-control" type="text" id="firstname" value="@prénom" />
-											<span class="glyphicon glyphicon-transfer form-control-feedback hidden state" aria-hidden="true"></span>
-											<span class="input-group-btn">
-												<button class="btn cancel-changes glyphicon glyphicon-remove" type="button"></button>
-												<button class="btn btn-default save glyphicon glyphicon-save" type="button"></button>
-											</span>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</dd>
 					</dl>
 				</div>
 			</div>
                         <div class="panel panel-default">
-				<div class="panel-heading" data-toggle="collapse" aria-expanded="true" aria-controls="general-content" data-target="#general-content">
+				<div class="panel-heading" data-toggle="collapse" aria-expanded="true" aria-controls="service-content" data-target="#service-content">
 					<h2 class="panel-title">Service</h2>
 				</div>
 				<div class="container-fluid">
-					<dl class="dl-horizontal collapse in" id="general-content">
-						<dt class="label-cell">Nom</dt>
+					<dl class="dl-horizontal collapse in" id="service-content">
+                                             <dt class="label-cell">Hôpital</dt>
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@nom</span>
-									<a href="#edit-nameservice" class="editlink glyphicon glyphicon-pencil"></a>
+									<span class="content-value">@hopital</span>
+									
 								</div>
-								<div class="hidden-value hidden" data-field="nameservice">
-									<div class="form-group has-feedback">
-										<div class="input-group">
-											<span class="input-group-btn">
-												<button class="btn btn-default cancel-sync glyphicon glyphicon-remove hidden" type="button"></button>
-											</span>
-											<input class="input form-control" type="text" id="firstname" value="@nom" />
-											<span class="glyphicon glyphicon-transfer form-control-feedback hidden state" aria-hidden="true"></span>
-											<span class="input-group-btn">
-												<button class="btn cancel-changes glyphicon glyphicon-remove" type="button"></button>
-												<button class="btn btn-default save glyphicon glyphicon-save" type="button"></button>
-											</span>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</dd>
-						<dt class="label-cell">Description</dt>
+                                              <dt class="label-cell">Pole</dt>
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@description</span>
-									<a href="#edit-descriptionservice" class="editlink glyphicon glyphicon-pencil"></a>
+									<span class="content-value">@pole</span>
 								</div>
-								<div class="hidden-value hidden" data-field="descriptionservice">
-									<div class="form-group has-feedback">
-										<div class="input-group">
-											<span class="input-group-btn">
-												<button class="btn btn-default cancel-sync glyphicon glyphicon-remove hidden" type="button"></button>
-											</span>
-											<input class="input form-control" type="text" id="firstname" value="@description" />
-											<span class="glyphicon glyphicon-transfer form-control-feedback hidden state" aria-hidden="true"></span>
-											<span class="input-group-btn">
-												<button class="btn cancel-changes glyphicon glyphicon-remove" type="button"></button>
-												<button class="btn btn-default save glyphicon glyphicon-save" type="button"></button>
-											</span>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</dd>
+                                              <dt class="label-cell">Service</dt>
+						<dd class="value-cell">
+							<div class="container-fluid">
+								<div class="value">
+									<span class="content-value">@service</span>
+									
+								</div>
+								
+							</div>
+						</dd>
+						
 					</dl>
 				</div>
 			</div>
