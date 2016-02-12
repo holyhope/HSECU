@@ -44,8 +44,12 @@ public class AddDMBean {
     private String descriptionService;
     
     /* Hopital */
-    private HashMap<Integer,Hospital> mapHospital;
+    private HashMap<Integer,Hospital> mapHospital = new HashMap<>();
 
+    public HashMap<Integer,Hospital> getMapHospital(){
+        return mapHospital;
+    }
+    
     /**
      * @return the lastUpdate
      */
