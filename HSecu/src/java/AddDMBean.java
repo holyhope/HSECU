@@ -1,5 +1,7 @@
 
 import Entity.Hospital;
+import Entity.Pole;
+import Entity.Service;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -43,11 +45,19 @@ public class AddDMBean {
     private String nomService;
     private String descriptionService;
     
-    /* Hopital */
+    /* Service */
     private HashMap<Integer,Hospital> mapHospital = new HashMap<>();
+    private HashMap<Integer,Pole> mapPole = new HashMap<>();
+    private HashMap<Integer,Service> mapService = new HashMap<>();
 
     public HashMap<Integer,Hospital> getMapHospital(){
         return mapHospital;
+    }
+    public HashMap<Integer,Pole> getMapPole(){
+        return mapPole;
+    }
+    public HashMap<Integer,Service> getMapService(){
+        return mapService;
     }
     
     /**
@@ -233,6 +243,46 @@ public class AddDMBean {
                 if(!mapHospital.containsKey(resultSet.getInt(1)))
                 {
                     mapHospital.put(resultSet.getInt(1), new Hospital(resultSet.getInt(1),resultSet.getString(2)));
+                }
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error getAllHopital " + request);
+            throw new FacesException(e);
+        }
+    }
+    public void initPole(){
+        //String request = "SELECT O.id_org,O.nom,O.description FROM organisation as O,hopital as H WHERE O.id_org=H.id_org";
+        String request = "SELECT * from pole";
+        try {
+            connexion = DBConnect.getConnection();
+            statement = connexion.createStatement();
+            resultSet = statement.executeQuery(request);
+                       
+            while (resultSet.next()) {
+                if(!mapPole.containsKey(resultSet.getInt(1)))
+                {
+                    mapPole.put(resultSet.getInt(1), new Pole(resultSet.getInt(1),resultSet.getString(2),resultSet.getInt(3)));
+                }
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error getAllHopital " + request);
+            throw new FacesException(e);
+        }
+    }
+    public void initService(){
+        //String request = "SELECT O.id_org,O.nom,O.description FROM organisation as O,hopital as H WHERE O.id_org=H.id_org";
+        String request = "SELECT * from service";
+        try {
+            connexion = DBConnect.getConnection();
+            statement = connexion.createStatement();
+            resultSet = statement.executeQuery(request);
+                       
+            while (resultSet.next()) {
+                if(!mapService.containsKey(resultSet.getInt(1)))
+                {
+                    mapService.put(resultSet.getInt(1), new Service(resultSet.getInt(1),resultSet.getString(2),resultSet.getInt(3)));
                 }
             }
 

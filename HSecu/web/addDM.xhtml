@@ -22,6 +22,8 @@
 
         <f:metadata>
             <f:viewAction action="#{AddDMBean.initHopital}" />
+            <f:viewAction action="#{AddDMBean.initPole}" />
+            <f:viewAction action="#{AddDMBean.initService}" />
         </f:metadata>
     </head>
     <body>
@@ -135,7 +137,7 @@
                             <dd class="value-cell">
                                 <div class="container-fluid">
                                     <select>
-
+                                            <option value=" "> </option>
                                         <c:forEach items="${AddDMBean.mapHospital}" var="item">
                                             <option value="${item.value.name}">${item.value.name}</option>
 
@@ -150,13 +152,29 @@
                             <dt class="label-cell">Pôle</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control hidden-load1" style="color: black" type="text" name="namePole"></input>
+                                    <select>
+                                        <option value=" "> </option>
+                                        <c:forEach items="${AddDMBean.mapPole}" var="item2">
+                                            <option value="${item2.value.name}">${item2.value.name}</option>
+
+
+                                        </c:forEach>
+
+                                    </select>
                                 </div>
                             </dd>
                             <dt class="label-cell">Service</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control hidden-load2" style="color: black" type="text" name="nameService"></input>
+                                    <select>
+                                        <option value=" "> </option>
+                                        <c:forEach items="${AddDMBean.mapService}" var="item3">
+                                            <option value="${item3.value.name}">${item3.value.name}</option>
+
+
+                                        </c:forEach>
+
+                                    </select>
                                 </div>
                             </dd>
                         </dl>
