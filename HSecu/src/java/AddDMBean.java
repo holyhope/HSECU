@@ -222,8 +222,8 @@ public class AddDMBean {
      * 
      */
     public void initHopital(){
-        String request = "SELECT O.id_org,O.nom,O.description FROM organisation as O,hopital as H WHERE O.id_org=H.id_org";
-
+        //String request = "SELECT O.id_org,O.nom,O.description FROM organisation as O,hopital as H WHERE O.id_org=H.id_org";
+        String request = "SELECT * from hopital";
         try {
             connexion = DBConnect.getConnection();
             statement = connexion.createStatement();
@@ -232,7 +232,7 @@ public class AddDMBean {
             while (resultSet.next()) {
                 if(!mapHospital.containsKey(resultSet.getInt(1)))
                 {
-                    mapHospital.put(resultSet.getInt(1), new Hospital(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3)));
+                    mapHospital.put(resultSet.getInt(1), new Hospital(resultSet.getInt(1),resultSet.getString(2)));
                 }
             }
 

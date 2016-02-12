@@ -2,11 +2,11 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="failure.xhtml" x="400" y="300" zoom="true"/>
         <Node id="success.xhtml" x="400" y="150" zoom="true"/>
         <Node id="header.jsp" x="650" y="300" zoom="true"/>
-        <Node id="findDM.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="failure.xhtml" x="400" y="300" zoom="true"/>
         <Node id="footer.jsp" x="150" y="300" zoom="true"/>
+        <Node id="findDM.xhtml" x="400" y="450" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

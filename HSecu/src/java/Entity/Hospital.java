@@ -12,14 +12,14 @@ package Entity;
 public class Hospital {
     private int id;
     private String name;
-    private String description;
+    //private String description;
 
     
-    public Hospital(int id,String name,String description)
+    public Hospital(int id,String name)
     {
         this.id = id;
         this.name = name;
-        this.description = description;
+        //this.description = description;
     }
     /**
      * @return the id
@@ -52,14 +52,17 @@ public class Hospital {
     /**
      * @return the description
      */
+    /*
     public String getDescription() {
         return description;
     }
-
+    */
     /**
      * @param description the description to set
      */
+    /*
     public void setDescription(String description) {
         this.description = description;
     }
+    */
 }
