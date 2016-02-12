@@ -4,8 +4,9 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
     <head>
         <script src="scripts/jquery-2.1.4.min.js"></script>
 
@@ -19,9 +20,9 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />	
         
-        <script>
-            
-        </script>
+        <f:metadata>
+            <f:viewAction action="#{AddDMBean.initHopital}" />
+        </f:metadata>
     </head>
     <body>
         <h:form>
@@ -129,6 +130,15 @@
                     <div class="container-fluid">
                         <dl class="dl-horizontal collapse in" id="general-content">
                             <dt class="label-cell">Hôpital</dt>
+                            
+                            <c:forEach items="${AddDMBean.mapHospital}" var="item">
+                                    <tr>
+                                        <td>${item.value.id}</td>
+                                        <td>${item.value.name}</td>
+                                        <td>${item.value.description}</td>
+                                    </tr>
+                            </c:forEach>
+                            
                             <dd class="value-cell">
                                 <div class="container-fluid">
                                     <input class="form-control" style="color: black" type="text" name="nameHopital"></input>
