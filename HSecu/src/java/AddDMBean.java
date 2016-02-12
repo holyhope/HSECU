@@ -1,7 +1,10 @@
 
+import Entity.Hospital;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.HashMap;
+import javax.faces.FacesException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -39,6 +42,9 @@ public class AddDMBean {
     /* Service */
     private String nomService;
     private String descriptionService;
+    
+    /* Hopital */
+    private HashMap<Integer,Hospital> mapHospital;
 
     /**
      * @return the lastUpdate
@@ -206,5 +212,29 @@ public class AddDMBean {
      */
     public void setDescriptionService(String descriptionService) {
         this.descriptionService = descriptionService;
+    }
+    
+    /**
+     * 
+     */
+    public void initHopital(){
+        String request = "SELECT O.id_org,O.nom,O.description FROM organisation as O,hopital as H WHERE O.id_org=H.id_org";
+
+        try {
+            connexion = DBConnect.getConnection();
+            statement = connexion.createStatement();
+            resultSet = statement.executeQuery(request);
+                       
+            while (resultSet.next()) {
+                if(!mapHospital.containsKey(resultSet.getInt(1)))
+                {
+                    mapHospital.put(resultSet.getInt(1), new Hospital(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3)));
+                }
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error getAllHopital " + request);
+            throw new FacesException(e);
+        }
     }
 }
