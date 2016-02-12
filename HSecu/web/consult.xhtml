@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
     <head>
         <script src="scripts/jquery-2.1.4.min.js"></script>
 
@@ -13,6 +15,10 @@
 		
 	    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />	
+            
+             <f:metadata>
+                 <f:viewAction action="#{consultBean.initConsult}" />
+            </f:metadata>
     </head>
     <body>
         <div class="container">
@@ -29,7 +35,7 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@last update</span>
+                                                                    <span class="content-value">#{consultBean.lastUpdate}</span>
 									
 								</div>
 								
@@ -39,7 +45,7 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@last read</span>
+									<span class="content-value">#{consultBean.lastRead}</span>
 									
 								</div>
 								
@@ -58,7 +64,7 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@nom</span>
+									<span class="content-value">#{consultBean.patientName}</span>
 									
 								</div>
 								
@@ -68,7 +74,7 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@prenom</span>
+									<span class="content-value">#{consultBean.patientFirstname}</span>
 									
 								</div>
 								
@@ -79,7 +85,7 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@service</span>
+									<span class="content-value">#{consultBean.patientService}</span>
 									
 								</div>
 								
@@ -89,7 +95,7 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@adresse</span>
+									<span class="content-value">#{consultBean.patientAdress}</span>
 									
 								</div>
 								
@@ -99,7 +105,7 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@téléphone</span>
+                                                                    <span class="content-value">#{consultBean.patientTelephone}</span>
 								</div>
 								
 							</div>
@@ -108,7 +114,7 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@date de naissance</span>
+                                                                    <span class="content-value">#{consultBean.patientBirthdate}</span>
 									
 								</div>
 								
@@ -118,7 +124,7 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@email</span>
+                                                                    <span class="content-value">#{consultBean.patientEmail}</span>
 									
 								</div>
 								
@@ -137,7 +143,7 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@adresse</span>
+                                                                    <span class="content-value">#{consultBean.doctorName}</span>
 									
 								</div>
 								
@@ -147,7 +153,7 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@prénom</span>
+                                                                    <span class="content-value">#{consultBean.doctorFirstname}</span>
 									
 								</div>
 								
@@ -166,7 +172,7 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@hopital</span>
+                                                                    <span class="content-value">#{consultBean.serviceHospital}</span>
 									
 								</div>
 								
@@ -176,7 +182,7 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@pole</span>
+                                                                    <span class="content-value">#{consultBean.servicePole}</span>
 								</div>
 								
 							</div>
@@ -185,7 +191,7 @@
 						<dd class="value-cell">
 							<div class="container-fluid">
 								<div class="value">
-									<span class="content-value">@service</span>
+									<span class="content-value">#{consultBean.serviceService}</span>
 									
 								</div>
 								
