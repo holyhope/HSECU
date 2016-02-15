@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -20,17 +21,10 @@ import javax.faces.context.FacesContext;
  * @author Peroumalle
  */
 @ManagedBean(name = "loginBean")
-@ApplicationScoped
+@SessionScoped
 public class LoginBean {
     private String login;
-
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
+    private int idUser;
     private String password;
     private String dbuserName;
     private Boolean connected = false;
@@ -42,8 +36,23 @@ public class LoginBean {
     Statement statement;
     ResultSet resultSet;
     String SQL;
-     
-  
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
+    
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
     public String getLogin() {
         return login;
     }
@@ -83,12 +92,15 @@ public class LoginBean {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/HSecu","root","root");
             statement = connection.createStatement();
-            SQL = "SELECT `login`,`motdepasse` from utilisateur";
+            SQL = "SELECT `id_user`,`login`,`motdepasse` from utilisateur WHERE login = '"+userName+"'";
+            System.out.println(SQL);
             resultSet = statement.executeQuery(SQL);
             resultSet.next();
-            dbuserName = resultSet.getString(1);
-            dbpassword = resultSet.getString(2);
+            idUser = resultSet.getInt(1);
+            dbuserName = resultSet.getString(2);
+            dbpassword = resultSet.getString(3);
             System.out.println("------------"+dbuserName);
+            System.out.println(idUser + " " + dbuserName +" "+dbpassword);
         }
         catch(Exception ex)
         {
