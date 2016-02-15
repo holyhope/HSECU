@@ -82,6 +82,7 @@ public class LoginBean {
         {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/HSecu","root","root");
+            //connection = DriverManager.getConnection("jdbc:mysql://sqletud.univ-mlv.fr/jpertus_db","jpertus","blabla21");
             statement = connection.createStatement();
             SQL = "SELECT `login`,`motdepasse` from utilisateur";
             resultSet = statement.executeQuery(SQL);
