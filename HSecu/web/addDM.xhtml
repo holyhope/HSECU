@@ -22,6 +22,8 @@
 
         <f:metadata>
             <f:viewAction action="#{AddDMBean.initHopital}" />
+            <f:viewAction action="#{AddDMBean.initPole}" />
+            <f:viewAction action="#{AddDMBean.initService}" />
         </f:metadata>
     </head>
     <body>
@@ -52,21 +54,21 @@
                     </div>
                 </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" aria-expanded="true" aria-controls="general-content" data-target="#general-content">
+                    <div class="panel-heading" data-toggle="collapse" aria-expanded="true" aria-controls="patient-content" data-target="#patient-content">
                         <h2 class="panel-title">Patient</h2>
                     </div>
                     <div class="container-fluid">
-                        <dl class="dl-horizontal collapse in" id="general-content">
+                        <dl class="dl-horizontal collapse in" id="patient-content">
                             <dt class="label-cell">Nom</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="text" name="nameUser"></input>
+                                    <input class="form-control" style="color: black" type="text" name="nameUser" value="#{AddDMBean.nom}"></input>
                                 </div>
                             </dd>
                             <dt class="label-cell">Prénom</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="text" name="firstnameUser"></input>
+                                    <input class="form-control" style="color: black" type="text" name="firstnameUser" value="#{AddDMBean.prenom}"></input>
                                 </div>
                             </dd>
                             <dt class="label-cell">Sexe</dt>
@@ -78,85 +80,72 @@
                             <dt class="label-cell">Adresse</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="text" name="adsUser"></input>
+                                    <input class="form-control" style="color: black" type="text" name="adsUser" value="#{AddDMBean.adresse}"></input>
                                 </div>
                             </dd>
                             <dt class="label-cell">Téléphone</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="tel" name="phoneUser"></input>
+                                    <input class="form-control" style="color: black" type="tel" name="phoneUser" value="#{AddDMBean.telephone}"></input>
                                 </div>
                             </dd>
                             <dt class="label-cell">Date de naissance</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="date" name="birthdayUser"></input>
+                                    <input class="form-control" style="color: black" type="date" name="birthdayUser" value="#{AddDMBean.dateBorn}"></input>
                                 </div>
                             </dd>
                             <dt class="label-cell">Email</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="email" name="emailUser"></input>
+                                    <input class="form-control" style="color: black" type="email" name="emailUser" value="#{AddDMBean.email}"></input>
                                 </div>
                             </dd>
                         </dl>
                     </div>
                 </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" aria-expanded="true" aria-controls="general-content" data-target="#general-content">
+                    <div class="panel-heading" data-toggle="collapse" aria-expanded="true" aria-controls="doctor-content" data-target="#doctor-content">
                         <h2 class="panel-title">Médecin Traitant</h2>
                     </div>
                     <div class="container-fluid">
-                        <dl class="dl-horizontal collapse in" id="general-content">
+                        <dl class="dl-horizontal collapse in" id="doctor-content">
                             <dt class="label-cell">Nom</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="text" name="nameMed"></input>
+                                    <input class="form-control" style="color: black" type="text" name="nameMed" value="#{AddDMBean.nomMed}"></input>
                                 </div>
                             </dd>
                             <dt class="label-cell">Prénom</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="text" name="firstnameMed"></input>
+                                    <input class="form-control" style="color: black" type="text" name="firstnameMed" value="#{AddDMBean.prenomMed}"></input>
                                 </div>
                             </dd>
                         </dl>
                     </div>
                 </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" aria-expanded="true" aria-controls="general-content" data-target="#general-content">
+                    <div class="panel-heading" data-toggle="collapse" aria-expanded="true" aria-controls="service-content" data-target="#service-content">
                         <h2 class="panel-title">Service</h2>
                     </div>
                     <div class="container-fluid">
-                        <dl class="dl-horizontal collapse in" id="general-content">
-           
-                            <dt class="label-cell">Hôpital</dt>
-
-                            <dd class="value-cell">
-                                <div class="container-fluid">
-                                    <select>
-
-                                        <c:forEach items="${AddDMBean.mapHospital}" var="item">
-                                            <option value="${item.value.name}">${item.value.name}</option>
-
-
-                                        </c:forEach>
-
-                                    </select>
-
-
-                                </div>
-                            </dd>
-                            <dt class="label-cell">Pôle</dt>
-                            <dd class="value-cell">
-                                <div class="container-fluid">
-                                    <input class="form-control hidden-load1" style="color: black" type="text" name="namePole"></input>
-                                </div>
-                            </dd>
+                        <dl class="dl-horizontal collapse in" id="service-content">
                             <dt class="label-cell">Service</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control hidden-load2" style="color: black" type="text" name="nameService"></input>
+                                    <select>
+                                        <option value=" "> </option>
+                                        <c:forEach items="${AddDMBean.mapHospital}" var="item1">
+                                            <option value="${item1.value.name}">---Hopital---------${item1.value.name}</option>
+                                            <c:forEach items="${item1.value.listPole}" var="item2">
+                                                <option value="${item2.name}">------Pole------${item2.name}</option>
+                                                <c:forEach items="${item2.listService}" var="item3">
+                                                    <option value="${item3.name}">---------Service---${item3.name}</option>
+                                                </c:forEach>
+                                            </c:forEach>
+                                        </c:forEach>
+                                    </select>
                                 </div>
                             </dd>
                         </dl>
