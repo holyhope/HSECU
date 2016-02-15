@@ -5,24 +5,20 @@
  */
 package Entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author jpertus
  */
-public class Hospital {
+public class Service {
     private int id;
     private String name;
-    private List<Pole> listPole = new ArrayList<>();
+    private int id_pole;
 
-    public Hospital(int id, String name) {
+    public Service(int id, String name, int id_pole) {
         this.id = id;
         this.name = name;
+        this.id_pole = id_pole;
     }
-
-    
     
     /**
      * @return the id
@@ -53,18 +49,17 @@ public class Hospital {
     }
 
     /**
-     * @return the listPole
+     * @return the id_pole
      */
-    public List<Pole> getListPole() {
-        return listPole;
+    public int getId_pole() {
+        return id_pole;
     }
 
     /**
-     * @param listPole the listPole to set
+     * @param id_pole the id_pole to set
      */
-    public void setListPole(List<Pole> listPole) {
-        this.listPole = listPole;
+    public void setId_pole(int id_pole) {
+        this.id_pole = id_pole;
     }
-    
-    
+        
 }

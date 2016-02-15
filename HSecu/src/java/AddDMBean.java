@@ -1,5 +1,7 @@
 
 import Entity.Hospital;
+import Entity.Pole;
+import Entity.Service;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -34,6 +36,7 @@ public class AddDMBean {
     private String adresse;
     private String telephone;
     private String dateBorn;
+    private String email;
 
     /* Medecin */
     private String nomMed;
@@ -43,11 +46,19 @@ public class AddDMBean {
     private String nomService;
     private String descriptionService;
     
-    /* Hopital */
+    /* Service */
     private HashMap<Integer,Hospital> mapHospital = new HashMap<>();
+    private HashMap<Integer,Pole> mapPole = new HashMap<>();
+    private HashMap<Integer,Service> mapService = new HashMap<>();
 
     public HashMap<Integer,Hospital> getMapHospital(){
         return mapHospital;
+    }
+    public HashMap<Integer,Pole> getMapPole(){
+        return mapPole;
+    }
+    public HashMap<Integer,Service> getMapService(){
+        return mapService;
     }
     
     /**
@@ -63,6 +74,21 @@ public class AddDMBean {
     public void setLastUpdate(String lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
+    
+     /**
+     * @return the emailPatient
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param emailPatient 
+     */
+    public void setEmail(String emailPatient) {
+        this.email = emailPatient;
+    }
+
 
     /**
      * @return the lastRead
@@ -240,5 +266,54 @@ public class AddDMBean {
             System.err.println("Error getAllHopital " + request);
             throw new FacesException(e);
         }
+    }
+    public void initPole(){
+        String request = "SELECT * from pole";
+        try {
+            connexion = DBConnect.getConnection();
+            statement = connexion.createStatement();
+            resultSet = statement.executeQuery(request);
+                       
+            while (resultSet.next()) {
+                if((!mapPole.containsKey(resultSet.getInt(1)))&&(mapHospital.containsKey(resultSet.getInt(3))))
+                {
+                    Pole poleee = new Pole(resultSet.getInt(1),resultSet.getString(2),resultSet.getInt(3));
+                    mapPole.put(resultSet.getInt(1),poleee);
+                    Hospital hosppp = mapHospital.get(resultSet.getInt(3));
+                    hosppp.getListPole().add(poleee);
+                }
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error getAllHopital " + request);
+            throw new FacesException(e);
+        }
+    }
+    public void initService(){
+        String request = "SELECT * from service";
+        try {
+            connexion = DBConnect.getConnection();
+            statement = connexion.createStatement();
+            resultSet = statement.executeQuery(request);
+                       
+            while (resultSet.next()) {
+                if  ((!mapService.containsKey(resultSet.getInt(1))) && (mapPole.containsKey(resultSet.getInt(3))))
+                {
+                    Pole polee = mapPole.get(resultSet.getInt(3));
+                    Service serviceee = new Service(resultSet.getInt(1),resultSet.getString(2),resultSet.getInt(3));
+                    polee.getListService().add(serviceee);
+                    mapService.put(resultSet.getInt(1),serviceee);
+                }
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error getAllHopital " + request);
+            throw new FacesException(e);
+        }
+    }
+    
+    public void insertDM()
+    {
+        String request = "INSERT";
     }
 }
