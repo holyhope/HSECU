@@ -43,7 +43,12 @@ and open the template in the editor.
                 <f:param name="idUser" value="#{loginBean.idUser}" />
             </f:viewAction>
         </f:metadata>
-        #{loginBean.idUser}
+
+        <ul class="nav nav-pills nav-justified" id="myTab">
+            <li class=""><a data-toggle="tab" href="addDM.xhtml">Ajouter DM</a></li>
+            <li class=""><a href="login.xhtml">Déconnexion</a></li>
+        </ul>
+
         <div class="container">
             <div class="page-header">
                 <h1>Consulter un dossier médical</h1>
@@ -51,11 +56,11 @@ and open the template in the editor.
             <div class="form-group hidden" id="search-form">
                 <label class="control-label sr-only" for="search">Search</label>
                 <div class="input-group input-group-lg">
-                    
+
                     <input type="text" class="form-control" id="search" placeholder="Rechercher..." />
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-inverse">Rechercher</button>
- 
+
                     </span>
                 </div>
             </div>
