@@ -16,8 +16,24 @@ and open the template in the editor.
         <link rel="stylesheet" href="styles/template.css" />
         <link rel="stylesheet" href="styles/bootstrap.min.css" />
         <script src="scripts/jquery-2.1.4.min.js"></script>
-        
-        
+
+        <script>
+            jQuery(document).ready(function ($) {
+                var $form = $('#search-form');
+                var $search = $form.find('#search').on('keyup', function () {
+                    var value = $(this).val().toLowerCase().trim();
+                    $('#list .dm').show().filter(function (index, elem) {
+                        return $(elem).data('name').indexOf(value) == -1;
+                    }).hide();
+                });
+                $form.find('#clear').on('click', function () {
+                    $search.val('').trigger('keyup');
+                });
+                $form.removeClass('hidden');
+            });
+        </script>
+
+
 
     </head>
     <body>
@@ -48,7 +64,7 @@ and open the template in the editor.
 
                     <a class="list-group-item dm" href="#{myVar}" data-name="#{item.patientFirstname} #{item.patientName}">"#{item.patientFirstname} #{item.patientName}"</a>
                 </c:forEach>
-               
+
             </div>
         </div>
     </body>
