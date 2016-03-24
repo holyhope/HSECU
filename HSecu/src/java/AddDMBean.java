@@ -352,7 +352,7 @@ public class AddDMBean {
     public void insertpatient()
     {
         String request = "INSERT INTO 'patient' ('id_patient', 'nom_patient', 'prenom_patient', 'sexe_patient', 'adresse_patient', 'telephone', 'date_naissance', 'email') VALUES (NULL,'"+
-                nom+"','"+prenom+"','"+sexe+"','"+adresse+"',"+telephone+",'"+dateBorn+"','"+email+"')";
+                nom+"','"+prenom+"','Male','"+adresse+"',"+telephone+",'"+dateBorn+"','"+email+"')";
 
         System.out.println(request);
         try 
@@ -373,6 +373,7 @@ public class AddDMBean {
         }
         System.out.println(idPatient);
     }
+    
     public void insertdossier()
     {
         String request = "INSERT INTO 'dossiermedicale' ('id_dm', 'lastUpdate', 'lastRead', 'idService', 'id_patient') VALUES (NULL,NULL,NULL,"+
