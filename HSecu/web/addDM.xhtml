@@ -65,7 +65,7 @@
                             <dt class="label-cell">Prénom</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="text" name="firstnameUser" value="#{AddDMBean.prenom}"></input>
+                                    <h:inputText class="form-control" style="color: black" value="#{AddDMBean.prenom}" />
                                 </div>
                             </dd>
                             <dt class="label-cell">Sexe</dt>
@@ -77,25 +77,27 @@
                             <dt class="label-cell">Adresse</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="text" name="adsUser" value="#{AddDMBean.adresse}"></input>
+                                    <h:inputText class="form-control" style="color: black" value="#{AddDMBean.adresse}"/>
                                 </div>
                             </dd>
                             <dt class="label-cell">Téléphone</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="tel" name="phoneUser" value="#{AddDMBean.telephone}"></input>
+                                    <h:inputText class="form-control" style="color: black" value="#{AddDMBean.telephone}"/>
                                 </div>
                             </dd>
                             <dt class="label-cell">Date de naissance</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="date" name="birthdayUser" value="#{AddDMBean.dateBorn}"></input>
+                                    <h:inputText class="form-control" style="color: black" value="#{AddDMBean.dateBorn}"/>
                                 </div>
                             </dd>
                             <dt class="label-cell">Email</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="email" name="emailUser" value="#{AddDMBean.email}"></input>
+                                    <h:inputText class="form-control" style="color: black" value="#{AddDMBean.email}">
+                                        <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                                    </h:inputText>
                                 </div>
                             </dd>
                         </dl>
@@ -110,13 +112,13 @@
                             <dt class="label-cell">Nom</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="text" name="nameMed" value="#{AddDMBean.nomMed}"></input>
+                                    <h:inputText class="form-control" style="color: black" value="#{AddDMBean.nomMed}"/>
                                 </div>
                             </dd>
                             <dt class="label-cell">Prénom</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="text" name="firstnameMed" value="#{AddDMBean.prenomMed}"></input>
+                                    <h:inputText class="form-control" style="color: black" value="#{AddDMBean.prenomMed}"/>
                                 </div>
                             </dd>
                         </dl>
@@ -131,14 +133,11 @@
                             <dt class="label-cell">Service</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <select value="{AddDMBean.idService}">
+                                    <select value="">
                                         <c:forEach var="item" items="${AddDMBean.mapService}">
                                             <option value="${item.value.id}">${item.value.name}</option>
                                         </c:forEach>
                                     </select>
-                                        <c:forEach var="country" items="${capitalList}">
-                                            Country: ${country.key}  - Capital: ${country.value}
-                                        </c:forEach>
                                 </div>
                             </dd>
                         </dl>

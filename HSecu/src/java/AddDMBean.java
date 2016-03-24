@@ -5,7 +5,9 @@ import Entity.Service;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import javax.faces.FacesException;
 
 /*
@@ -43,7 +45,7 @@ public class AddDMBean {
     private String prenomMed;
 
     /* Update in DB */
-    private int idService;
+    private int idService=1;
     private int idPatient;
     private int idMedecin;
     private int idDossier;
@@ -52,6 +54,7 @@ public class AddDMBean {
     private HashMap<Integer,Hospital> mapHospital = new HashMap<>();
     private HashMap<Integer,Pole> mapPole = new HashMap<>();
     private HashMap<Integer,Service> mapService = new HashMap<>();
+    private List<String> listString = new ArrayList<String>();
 
     public HashMap<Integer,Hospital> getMapHospital(){
         return mapHospital;
@@ -342,16 +345,35 @@ public class AddDMBean {
         }
     }
     
+    public void initServiceList(){
+        String request = "SELECT * from service";
+        try {
+            connexion = DBConnect.getConnection();
+            statement = connexion.createStatement();
+            resultSet = statement.executeQuery(request);
+                       
+            while (resultSet.next()) {
+                    Service serviceee = new Service(resultSet.getInt(1),resultSet.getString(2),resultSet.getInt(3));
+                    getListString().add(serviceee.getName());
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error getAllHopital " + request);
+            throw new FacesException(e);
+        }
+    }
+    
     public void insertDM()
     {
          insertpatient();
-         //insertdossier();
-         //insertmedecin();
+         insertdossier();
+         insertmedecin();
+         insertMedecinTraitant();
     }
        
     public void insertpatient()
     {
-        String request = "INSERT INTO 'patient' ('id_patient', 'nom_patient', 'prenom_patient', 'sexe_patient', 'adresse_patient', 'telephone', 'date_naissance', 'email') VALUES (NULL,'"+
+        String request = "INSERT INTO `patient`(`id_patient`, `nom_patient`, `prenom_patient`, `sexe_patient`, `adresse_patient`, `telephone`, `date_naissance`, `email`) VALUES (NULL,'"+
                 nom+"','"+prenom+"','Male','"+adresse+"',"+telephone+",'"+dateBorn+"','"+email+"')";
 
         System.out.println(request);
@@ -376,8 +398,8 @@ public class AddDMBean {
     
     public void insertdossier()
     {
-        String request = "INSERT INTO 'dossiermedicale' ('id_dm', 'lastUpdate', 'lastRead', 'idService', 'id_patient') VALUES (NULL,NULL,NULL,"+
-                idService+","+idPatient+")";
+        String request = "INSERT INTO `dossiermedicale`(`id_dm`, `lastUpdate`, `lastRead`, `idService`, `id_patient`) VALUES (NULL,'2016-02-24 15:54:33', '2016-02-24 01:00:00',"+
+                1+","+idPatient+")";
 
         System.out.println(request);
         try 
@@ -400,7 +422,7 @@ public class AddDMBean {
     }
     public void insertmedecin()
     {
-        String request = "INSERT INTO 'medecin' ('id_medecin', 'nom', 'prenom') VALUES (NULL,'"+
+        String request = "INSERT INTO `medecin`(`id_medecin`, `nom`, `prenom`) VALUES (NULL,'"+
                 nomMed+"','"+prenomMed+"')";
 
         System.out.println(request);
@@ -422,4 +444,43 @@ public class AddDMBean {
         }
         System.out.println(idMedecin);
     }
+    public void insertMedecinTraitant()
+    {
+        String request = "INSERT INTO `medecintraitant`(`id_medecin`, `id_dm`) VALUES ('"+
+                idMedecin+"','"+idDossier+"')";
+
+        System.out.println(request);
+        try 
+        {
+            connexion = DBConnect.getConnection();
+            statement = connexion.createStatement();
+            statement.executeUpdate(request, Statement.RETURN_GENERATED_KEYS);
+            resultSet = statement.getGeneratedKeys();
+                       
+            if (resultSet.next()) 
+            {
+                 resultSet.getInt(1);
+            }
+        } 
+        catch (Exception e) 
+        {
+            System.err.println("Error getMedecin " + request);
+        }
+        System.out.println(idMedecin);
+    }
+
+    /**
+     * @return the listString
+     */
+    public List<String> getListString() {
+        return listString;
+    }
+
+    /**
+     * @param listString the listString to set
+     */
+    public void setListString(List<String> listString) {
+        this.listString = listString;
+    }
+    
 }
