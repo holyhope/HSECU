@@ -42,9 +42,11 @@ public class AddDMBean {
     private String nomMed;
     private String prenomMed;
 
-    /* Service */
-    private String nomService;
-    private String descriptionService;
+    /* Update in DB */
+    private int idService;
+    private int idPatient;
+    private int idMedecin;
+    private int idDossier;
     
     /* Service */
     private HashMap<Integer,Hospital> mapHospital = new HashMap<>();
@@ -60,6 +62,8 @@ public class AddDMBean {
     public HashMap<Integer,Service> getMapService(){
         return mapService;
     }
+    
+    
     
     /**
      * @return the lastUpdate
@@ -215,38 +219,64 @@ public class AddDMBean {
     public void setPrenomMed(String prenomMed) {
         this.prenomMed = prenomMed;
     }
-
+    
     /**
-     * @return the nomService
+     * @return the idService
      */
-    public String getNomService() {
-        return nomService;
+    public int getIdService() {
+        return idService;
     }
 
     /**
-     * @param nomService the nomService to set
+     * @param idService the idService to set
      */
-    public void setNomService(String nomService) {
-        this.nomService = nomService;
-    }
-
-    /**
-     * @return the descriptionService
-     */
-    public String getDescriptionService() {
-        return descriptionService;
-    }
-
-    /**
-     * @param descriptionService the descriptionService to set
-     */
-    public void setDescriptionService(String descriptionService) {
-        this.descriptionService = descriptionService;
+    public void setIdService(int idService) {
+        this.idService = idService;
     }
     
     /**
-     * 
+     * @return the idPatient
      */
+    public int getIdPatient() {
+        return idPatient;
+    }
+
+    /**
+     * @param idPatient the idPatient to set
+     */
+    public void setIdPatient(int idPatient) {
+        this.idPatient = idPatient;
+    }
+    
+    
+    /**
+     * @return the idMedecin
+     */
+    public int getIdMedecin() {
+        return idMedecin;
+    }
+
+    /**
+     * @param idMedecin the idMedecin to set
+     */
+    public void setIdMedecin(int idMedecin) {
+        this.idMedecin = idMedecin;
+    }
+    
+    /**
+     * @return the idDossier
+     */
+    public int getIdDossier() {
+        return idDossier;
+    }
+
+    /**
+     * @param idDossier the idDossier to set
+     */
+    public void setIdDossier(int idDossier) {
+        this.idDossier = idDossier;
+    }
+    
     public void initHopital(){
         //String request = "SELECT O.id_org,O.nom,O.description FROM organisation as O,hopital as H WHERE O.id_org=H.id_org";
         String request = "SELECT * from hopital";
@@ -314,6 +344,81 @@ public class AddDMBean {
     
     public void insertDM()
     {
-        String request = "INSERT";
+         insertpatient();
+         //insertdossier();
+         //insertmedecin();
+    }
+       
+    public void insertpatient()
+    {
+        String request = "INSERT INTO 'patient' ('id_patient', 'nom_patient', 'prenom_patient', 'sexe_patient', 'adresse_patient', 'telephone', 'date_naissance', 'email') VALUES (NULL,'"+
+                nom+"','"+prenom+"','"+sexe+"','"+adresse+"',"+telephone+",'"+dateBorn+"','"+email+"')";
+
+        System.out.println(request);
+        try 
+        {
+            connexion = DBConnect.getConnection();
+            statement = connexion.createStatement();
+            statement.executeUpdate(request, Statement.RETURN_GENERATED_KEYS);
+            resultSet = statement.getGeneratedKeys();
+                       
+            if (resultSet.next()) 
+            {
+                idPatient = resultSet.getInt(1);
+            }
+        } 
+        catch (Exception e) 
+        {
+            System.err.println("Error getPatient " + request);
+        }
+        System.out.println(idPatient);
+    }
+    public void insertdossier()
+    {
+        String request = "INSERT INTO 'dossiermedicale' ('id_dm', 'lastUpdate', 'lastRead', 'idService', 'id_patient') VALUES (NULL,NULL,NULL,"+
+                idService+","+idPatient+")";
+
+        System.out.println(request);
+        try 
+        {
+            connexion = DBConnect.getConnection();
+            statement = connexion.createStatement();
+            statement.executeUpdate(request, Statement.RETURN_GENERATED_KEYS);
+            resultSet = statement.getGeneratedKeys();
+                       
+            if (resultSet.next()) 
+            {
+                idDossier = resultSet.getInt(1);
+            }
+        } 
+        catch (Exception e) 
+        {
+            System.err.println("Error getDossier " + request);
+        }
+        System.out.println(idDossier);
+    }
+    public void insertmedecin()
+    {
+        String request = "INSERT INTO 'medecin' ('id_medecin', 'nom', 'prenom') VALUES (NULL,'"+
+                nomMed+"','"+prenomMed+"')";
+
+        System.out.println(request);
+        try 
+        {
+            connexion = DBConnect.getConnection();
+            statement = connexion.createStatement();
+            statement.executeUpdate(request, Statement.RETURN_GENERATED_KEYS);
+            resultSet = statement.getGeneratedKeys();
+                       
+            if (resultSet.next()) 
+            {
+                idMedecin = resultSet.getInt(1);
+            }
+        } 
+        catch (Exception e) 
+        {
+            System.err.println("Error getMedecin " + request);
+        }
+        System.out.println(idMedecin);
     }
 }

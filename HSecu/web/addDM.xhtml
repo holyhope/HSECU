@@ -62,7 +62,8 @@
                             <dt class="label-cell">Nom</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <input class="form-control" style="color: black" type="text" name="nameUser" value="#{AddDMBean.nom}"></input>
+                                    <!--  <input class="form-control" style="color: black" type="text" name="userName" value="#{AddDMBean.nom}"></input>  -->
+                                    <h:inputText class="form-control" style="color: black" value="#{AddDMBean.nom}" />
                                 </div>
                             </dd>
                             <dt class="label-cell">Prénom</dt>
@@ -134,24 +135,20 @@
                             <dt class="label-cell">Service</dt>
                             <dd class="value-cell">
                                 <div class="container-fluid">
-                                    <select>
-                                        <option value=" "> </option>
-                                        <c:forEach items="${AddDMBean.mapHospital}" var="item1">
-                                            <option value="${item1.value.name}">---Hopital---------${item1.value.name}</option>
-                                            <c:forEach items="${item1.value.listPole}" var="item2">
-                                                <option value="${item2.name}">------Pole------${item2.name}</option>
-                                                <c:forEach items="${item2.listService}" var="item3">
-                                                    <option value="${item3.name}">---------Service---${item3.name}</option>
-                                                </c:forEach>
-                                            </c:forEach>
+                                    <select value="{AddDMBean.idService}">
+                                        <c:forEach var="item" items="${AddDMBean.mapService}">
+                                            <option value="${item.value.id}">${item.value.name}</option>
                                         </c:forEach>
                                     </select>
+                                        <c:forEach var="country" items="${capitalList}">
+                                            Country: ${country.key}  - Capital: ${country.value}
+                                        </c:forEach>
                                 </div>
                             </dd>
                         </dl>
                     </div>
                 </div>
-                <h:commandButton class="btn btn-primary " id="save" value="AJOUTER" />
+                <h:commandButton class="btn btn-primary " id="save" value="AJOUTER" type="submit" action="#{AddDMBean.insertDM}"/>
             </div>
         </h:form>
     </body>
