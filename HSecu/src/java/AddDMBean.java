@@ -286,8 +286,8 @@ public class AddDMBean {
 
         } catch (Exception e) {
             System.err.println("Error getAllHopital " + request);
-            throw new FacesException(e);
-        }
+            throw new FacesException(e); 
+       }
     }
     public void initService(){
         String request = "SELECT * from service";
